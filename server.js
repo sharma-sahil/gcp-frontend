@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 app.use(express.static('angular-assignment'))
 
 
-const backendURL = process.env.BACKEND_URL||"http://localhost:8090/api/user";
+const backendURL = process.env.BACKEND_URL||"http://10.11.243.238:8080/api/user";
 
 const frontendURL = '/server';
 
