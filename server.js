@@ -48,7 +48,6 @@ app.use(bodyParser.urlencoded({
 app.use(express.json());
 
 app.post(frontendURL, (req, res) => {
-	console.log(req.body);
     request.post({
         url: backendURL,
         body: req.body,
