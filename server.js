@@ -9,12 +9,12 @@ const bodyParser = require("body-parser");
 app.use(express.static('angular-assignment'))
 
 
-const backendURL = process.env.BACKEND_URL||"http://10.11.243.238:8080/api/user";
+const backendURL = process.env.BACKEND_URL||"http://localhost:8090";
 
 const frontendURL = '/server';
 
 app.get(frontendURL, (req, res) => {
-	request(backendURL, { json: true }, (err, resp, body) => {
+	request(backendURL + '/api/user', { json: true }, (err, resp, body) => {
 	  if (err || !body) {
 	  	  res.send("Error while getting users from "+backendURL) 
 	  } else{
@@ -25,7 +25,7 @@ app.get(frontendURL, (req, res) => {
 })
 
 app.get(frontendURL +'/test', (req, res) => {
-	request(backendURL+ '/test', { json: true }, (err, resp, body) => {
+	request(backendURL+ '/api/user/test', { json: true }, (err, resp, body) => {
 	  if (err || !body) {
 	  	  res.send("Error while getting users from "+backendURL) 
 	  } else{
@@ -49,7 +49,7 @@ app.use(express.json());
 
 app.post(frontendURL, (req, res) => {
     request.post({
-        url: backendURL,
+        url: backendURL + '/api/user',
         body: req.body,
         json: true
       }, function(err, resp, body){
